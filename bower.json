@@ -1,0 +1,11 @@
+{
+  "name": "<%= extName %",
+  "devDependencies": {
+    "jquery": "~2.1.3"
+  },
+  "dependencies": {
+    "bootstrap-css-only": "~3.3.4",
+    "jquery": "~2.1.4",
+    "buzz": "~1.1.10"
+  }
+}

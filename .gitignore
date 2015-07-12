@@ -1,0 +1,9 @@
+build
+node_modules
+.brackets.json
+**/*.DS_Store
+archive
+bower
+
+.idea
+*.iml
