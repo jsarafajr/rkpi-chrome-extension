@@ -3,18 +3,54 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title></title>
+
+  <!--<link rel="stylesheet" href="lib/simple-slider/simple-slider.css">-->
+  <link rel="stylesheet" href="lib/simple-slider/simple-slider-volume.css">
+
   <link rel="stylesheet" href="bower/bootstrap-css-only/css/bootstrap.css">
+  <link rel="stylesheet" href="style/popup.css">
+  <link rel="stylesheet" href="style/bouncing-text.css">
 </head>
 <body>
 
-  <div id="play_btn" class="btn btn-sm btn-default">
-    <span class="glyphicon glyphicon-play"></span>
-  </div>
-  <div id="stop_btn" class="btn btn-sm btn-default" style="display: none">
-    <span class="glyphicon glyphicon-stop"></span>
+<div class="popup-frame">
+  <div class="control-panel">
+    <div class="action-buttons">
+      <div id="play_btn" class="btn btn-sm btn-default" title="Play">
+        <span class="glyphicon glyphicon-play"></span>
+      </div>
+      <div id="stop_btn" class="btn btn-sm btn-default" style="display: none" title="Stop">
+        <span class="glyphicon glyphicon-stop"></span>
+      </div>
+    </div>
+
+    <div class="volume-control">
+      <div class="volume-slider">
+        <input id="volume-slider" type="text" data-slider="true" data-slider-theme="volume">
+      </div>
+      <div class="volume-icon glyphicon glyphicon-volume-up"></div>
+    </div>
   </div>
 
+  <div style="clear: left"></div>
+
+  <div class="">
+    <div class="horizontally">
+      <p>Artist - Song name name name name</p>
+    </div>
+  </div>
+
+  <div style="clear: left"></div>
+
+  <div style="font-size: 10px">
+    <a href="options.html" style="float: left" target="_blank">Options</a>
+    <a href="http://r.kpi.ua" style="float: right" target="_blank">r.kpi.ua</a>
+  </div>
+
+</div>
+
   <script src="bower/jquery/dist/jquery.min.js"></script>
+  <script src="lib/simple-slider/simple-slider.min.js"></script>
   <script src="scripts/popup.js"></script>
 </body>
 </html>

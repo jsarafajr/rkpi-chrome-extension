@@ -14,7 +14,7 @@
     },
 
     "background": {
-        "scripts": ["scripts/background.js", "bower/buzz/dist/buzz.min.js"]
+        "scripts": ["bower/buzz/dist/buzz.min.js", "scripts/background.js"]
     },
 
     "browser_action": {
