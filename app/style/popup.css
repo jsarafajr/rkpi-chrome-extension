@@ -17,9 +17,9 @@
 
 .volume-control {
     vertical-align: middle;
-    margin-left: 10px;
+    margin-left: 5px;
     display: inline-block;
-    width: 80px;
+    width: 90px;
 }
 
 .volume-control .volume-slider {

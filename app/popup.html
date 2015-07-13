@@ -13,41 +13,44 @@
 </head>
 <body>
 
-<div class="popup-frame">
-  <div class="control-panel">
-    <div class="action-buttons">
-      <div id="play_btn" class="btn btn-sm btn-default" title="Play">
-        <span class="glyphicon glyphicon-play"></span>
+  <div class="popup-frame">
+    <div class="control-panel">
+      <div class="action-buttons">
+        <div id="play_btn" class="btn btn-sm btn-default" title="Play">
+          <span class="glyphicon glyphicon-play"></span>
+        </div>
+        <div id="stop_btn" class="btn btn-sm btn-default" style="display: none" title="Stop">
+          <span class="glyphicon glyphicon-stop"></span>
+        </div>
       </div>
-      <div id="stop_btn" class="btn btn-sm btn-default" style="display: none" title="Stop">
-        <span class="glyphicon glyphicon-stop"></span>
+
+      <div class="volume-control">
+        <div class="volume-slider">
+          <input id="volume_slider" type="text" data-slider="true" data-slider-theme="volume">
+        </div>
+        <div id="mute_btn" style="cursor: pointer"
+             class="volume-icon glyphicon glyphicon-volume-up" title="Mute"></div>
+        <div id="unmute_btn" style="cursor: pointer; display: none"
+             class="volume-icon glyphicon glyphicon-volume-off" title="Unmute"></div>
       </div>
     </div>
 
-    <div class="volume-control">
-      <div class="volume-slider">
-        <input id="volume-slider" type="text" data-slider="true" data-slider-theme="volume">
+    <div style="clear: left"></div>
+
+    <div class="">
+      <div class="horizontally">
+        <p>Artist - Song name name name name</p>
       </div>
-      <div class="volume-icon glyphicon glyphicon-volume-up"></div>
     </div>
-  </div>
 
-  <div style="clear: left"></div>
+    <div style="clear: left"></div>
 
-  <div class="">
-    <div class="horizontally">
-      <p>Artist - Song name name name name</p>
+    <div style="font-size: 10px">
+      <a href="options.html" style="float: left" target="_blank">Options</a>
+      <a href="http://r.kpi.ua" style="float: right" target="_blank">r.kpi.ua</a>
     </div>
+
   </div>
-
-  <div style="clear: left"></div>
-
-  <div style="font-size: 10px">
-    <a href="options.html" style="float: left" target="_blank">Options</a>
-    <a href="http://r.kpi.ua" style="float: right" target="_blank">r.kpi.ua</a>
-  </div>
-
-</div>
 
   <script src="bower/jquery/dist/jquery.min.js"></script>
   <script src="lib/simple-slider/simple-slider.min.js"></script>

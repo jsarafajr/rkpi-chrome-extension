@@ -1,15 +1,17 @@
 var radioThread;
 
 var isPlaying = false;
+var volume = 70;
 
 function playRadio() {
     radioThread = new buzz.sound("http://77.47.130.190:8000/radiokpi");
     radioThread.play();
+    radioThread.setVolume(volume);
 
     chrome.browserAction.setBadgeText({text: ".."});
 
     radioThread.bind("loadeddata", function(e) {
-        chrome.browserAction.setBadgeText({text: ">"});
+        setBadge(">")
     });
 
     isPlaying = true;
@@ -17,9 +19,22 @@ function playRadio() {
 
 function stopRadio() {
     radioThread.stop();
-
-    chrome.browserAction.setBadgeText({text: ""});
-
+    setBadge("");
     isPlaying = false;
 }
 
+function setVolume(value) {
+    volume = value;
+
+    if (radioThread != null) {
+        radioThread.setVolume(value);
+    }
+}
+
+function toggleMute() {
+    radioThread.toggleMute();
+}
+
+function setBadge(text) {
+    chrome.browserAction.setBadgeText({text: text});
+}
