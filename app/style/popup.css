@@ -17,14 +17,13 @@
 
 .volume-control {
     vertical-align: middle;
-    margin-left: 5px;
     display: inline-block;
-    width: 90px;
+    width: 85px;
 }
 
 .volume-control .volume-slider {
     display: inline-block;
-    width: 60px;
+    width: 65px;
 }
 
 .volume-control .volume-icon {

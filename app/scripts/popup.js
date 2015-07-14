@@ -1,5 +1,6 @@
 var bgPage = chrome.extension.getBackgroundPage();
 
+// set saved volume to slider
 $("#volume_slider").val(bgPage.volume / 100);
 
 // radio already playing
@@ -17,23 +18,17 @@ $("#stop_btn").click(function() {
     toggleActionButtons();
 });
 
-
 $("#volume_slider").bind("slider:changed", function(event, data) {
-    // The currently selected value of the slider
+    // currently selected value of the slider
     bgPage.setVolume(data.value * 100);
 });
 
 $("#mute_btn, #unmute_btn").click(function() {
     bgPage.toggleMute();
-    toggleMuteButtons();
+    $("#mute_btn, #unmute_btn").toggle();
 });
 
 function toggleActionButtons() {
     $("#play_btn").toggle();
     $("#stop_btn").toggle();
-}
-
-function toggleMuteButtons() {
-    $("#mute_btn").toggle();
-    $("#unmute_btn").toggle();
 }

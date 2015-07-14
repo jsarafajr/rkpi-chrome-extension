@@ -8,7 +8,7 @@ function playRadio() {
     radioThread.play();
     radioThread.setVolume(volume);
 
-    chrome.browserAction.setBadgeText({text: ".."});
+    setBadge("..");
 
     radioThread.bind("loadeddata", function(e) {
         setBadge(">")
