@@ -28,6 +28,15 @@ $("#mute_btn, #unmute_btn").click(function() {
     $("#mute_btn, #unmute_btn").toggle();
 });
 
+$("#options_btn").click(function() {
+    // supported in (Chrome 42+).
+    if (chrome.runtime.openOptionsPage) {
+        chrome.runtime.openOptionsPage();
+    } else {
+        window.open(chrome.runtime.getURL('options.html'));
+    }
+});
+
 function toggleActionButtons() {
     $("#play_btn").toggle();
     $("#stop_btn").toggle();
