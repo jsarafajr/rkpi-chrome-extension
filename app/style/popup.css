@@ -1,6 +1,12 @@
 .popup-frame {
     padding: 10px;
     width: 150px;
+    margin: 5px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
 }
 
 .control-panel {
@@ -24,8 +30,24 @@
 .volume-control .volume-slider {
     display: inline-block;
     width: 65px;
+    margin-top: 5px;
 }
 
 .volume-control .volume-icon {
     display: inline-block;
+}
+
+.song-title {
+    margin-top: 10px;
+    width: 100%;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#song_name {
+    text-align: center;
+    position: absolute;
+    white-space: nowrap;
 }

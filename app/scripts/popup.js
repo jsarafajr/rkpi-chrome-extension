@@ -8,6 +8,9 @@ if (bgPage.isPlaying) {
     toggleActionButtons();
 }
 
+// getting song name
+initSongNameInterval();
+
 $("#play_btn").click(function() {
     bgPage.playRadio();
     toggleActionButtons();
@@ -16,6 +19,10 @@ $("#play_btn").click(function() {
 $("#stop_btn").click(function() {
     bgPage.stopRadio();
     toggleActionButtons();
+});
+
+$("#search_btn").click(function() {
+    bgPage.searchSong();
 });
 
 $("#volume_slider").bind("slider:changed", function(event, data) {
@@ -36,6 +43,21 @@ $("#options_btn").click(function() {
         window.open(chrome.runtime.getURL('options.html'));
     }
 });
+
+function initSongNameInterval() {
+    if (bgPage.songNameLoaded) {
+        $("#song_name").show();
+        $("#search_btn").show();
+    }
+
+    if (bgPage.songName === "Loading...") {
+        $("#song_name").show();
+    }
+
+    $("#song_name").html(bgPage.songName);
+    $("#song_name").attr("title", bgPage.songName);
+    setTimeout(initSongNameInterval, 1000)
+}
 
 function toggleActionButtons() {
     $("#play_btn").toggle();

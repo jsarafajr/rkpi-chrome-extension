@@ -1,10 +1,8 @@
 {
     "manifest_version": 2,
-
     "name": "Radio KPI Player",
     "description": "Chrome Extension for listening radio stream from r.kpi.ua",
-    "version": "1.0.0",
-
+    "version": "1.0.1",
     "icons": {
         "16": "img/logo_16.png",
         "32": "img/logo_32.png",
@@ -12,22 +10,21 @@
         "64": "img/logo_64.png",
         "128": "img/logo_128.png"
     },
-
     "background": {
-        "scripts": ["bower/buzz/dist/buzz.min.js", "scripts/background.js"]
+        "scripts": [
+            "bower/buzz/dist/buzz.min.js",
+            "scripts/background.js"
+        ]
     },
-
     "browser_action": {
         "default_icon": "img/logo_19.png",
         "default_popup": "popup.html",
         "default_title": "Radio KPI Player"
     },
-
     "options_ui": {
         "page": "options.html",
         "chrome_style": true
     },
-
     "permissions": [
         "storage"
     ]

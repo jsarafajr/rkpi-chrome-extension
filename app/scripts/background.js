@@ -1,4 +1,4 @@
-var radioThread;
+var radioStream;
 
 var isPlaying = false;
 var volume = 70; // default 70% volume
@@ -14,17 +14,20 @@ var SEARCH_ENGINES = [
         return "http://vk.com/search?c%5Bq%5D=" + query + "&c%5Bsection%5D=audio"
     },
     // YouTube
-    function() {
-        // todo
+    function(query) {
+        return "https://www.youtube.com/results?search_query=" + query;
     },
     // Google
-    function() {
-        // todo
+    function(query) {
+        return "https://www.google.com.ua/?gws_rd=ssl#safe=off&q=" + query;
     }
 ];
 
 var radioUrlIndex = 0;
 var searchIndex = 0;
+
+var songName = "Click on <b>Play</b> button";
+var songNameLoaded = false;
 
 loadOptions();
 
@@ -44,22 +47,26 @@ function loadOptions() {
 }
 
 function playRadio() {
-    radioThread = new buzz.sound(RADIO_LOCATIONS[radioUrlIndex]);
-    radioThread.play();
-    radioThread.setVolume(volume);
+    radioStream = new buzz.sound(RADIO_LOCATIONS[radioUrlIndex]);
+    radioStream.play();
+    radioStream.setVolume(volume);
 
     setBadge("..");
 
     // when is buffered
-    radioThread.bind("loadeddata", function(e) {
-        setBadge(">")
+    radioStream.bind("loadeddata", function(e) {
+        setBadge(">");
     });
 
     isPlaying = true;
+    songNameLoaded = false;
+
+    songName = "Loading...";
+    songNameRequestInterval();
 }
 
 function stopRadio() {
-    radioThread.stop();
+    radioStream.stop();
     setBadge("");
     isPlaying = false;
 }
@@ -67,15 +74,36 @@ function stopRadio() {
 function setVolume(value) {
     volume = value;
 
-    if (radioThread != null) {
-        radioThread.setVolume(value);
+    if (radioStream != null) {
+        radioStream.setVolume(value);
     }
 }
 
 function toggleMute() {
-    radioThread.toggleMute();
+    radioStream.toggleMute();
+}
+
+function searchSong() {
+    chrome.tabs.create({url: SEARCH_ENGINES[searchIndex](songName)});
 }
 
 function setBadge(text) {
     chrome.browserAction.setBadgeText({text: text});
+}
+
+function songNameRequestInterval() {
+    if (!isPlaying) return;
+
+    var request = new XMLHttpRequest();
+    request.open("GET", "http://77.47.130.190:7000/getmeta", true);
+
+    request.onreadystatechange = function () {
+        if (request.readyState != 4 || request.status != 200) return;
+        var responseJSON = JSON.parse(request.responseText);
+        songName = responseJSON["artist"] + " - " + responseJSON["title"];
+        songNameLoaded = true;
+    };
+    request.send();
+
+    setTimeout(songNameRequestInterval, 5000);
 }

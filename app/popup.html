@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <title></title>
 
-  <!--<link rel="stylesheet" href="lib/simple-slider/simple-slider.css">-->
   <link rel="stylesheet" href="lib/simple-slider/simple-slider-volume.css">
 
-  <link rel="stylesheet" href="bower/bootstrap-css-only/css/bootstrap.css">
+  <link rel="stylesheet" href="bower/bootstrap-css-only/css/bootstrap.min.css">
   <link rel="stylesheet" href="style/popup.css">
   <link rel="stylesheet" href="style/bouncing-text.css">
 </head>
@@ -37,20 +36,17 @@
 
     <div style="clear: left"></div>
 
-    <div class="">
-      <div>
-        <div class="horizontally">
-          <p>Artist - Song name name name name</p>
-        </div>
-      </div>
-      <div style="text-align: center">
-        <span class="glyphicon glyphicon-search"></span>
-      </div>
+    <div class="song-title">
+      <div id="song_name" style="display: none"></div>
+    </div>
+
+    <div id="search_btn" style="display:none; text-align: center; cursor: pointer">
+      <span class="glyphicon glyphicon-search"></span>
     </div>
 
     <div style="clear: left"></div>
 
-    <div style="font-size: 10px">
+    <div style="font-size: 10px; margin-bottom: 5px">
       <a id="options_btn" style="cursor: pointer; float: left" target="_blank">Options</a>
       <a href="http://r.kpi.ua" style="float: right" target="_blank">r.kpi.ua</a>
     </div>
@@ -60,5 +56,6 @@
   <script src="bower/jquery/dist/jquery.min.js"></script>
   <script src="lib/simple-slider/simple-slider.min.js"></script>
   <script src="scripts/popup.js"></script>
+  <script src="scripts/text-scroller.js"></script>
 </body>
 </html>
