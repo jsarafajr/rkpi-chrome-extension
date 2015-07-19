@@ -1,6 +1,6 @@
 var bgPage = chrome.extension.getBackgroundPage();
 
-// set saved volume to slider
+// set saved volume value to slider
 $("#volume_slider").val(bgPage.volume / 100);
 
 // radio already playing
@@ -9,7 +9,7 @@ if (bgPage.isPlaying) {
 }
 
 // getting song name
-initSongNameInterval();
+getSongNameInterval();
 
 $("#play_btn").click(function() {
     bgPage.playRadio();
@@ -44,19 +44,19 @@ $("#options_btn").click(function() {
     }
 });
 
-function initSongNameInterval() {
+function getSongNameInterval() {
     if (bgPage.songNameLoaded) {
-        $("#song_name").show();
+        //$("#song_name").show();
         $("#search_btn").show();
     }
 
-    if (bgPage.songName === "Loading...") {
-        $("#song_name").show();
-    }
+    //if (bgPage.songName === "Loading...") {
+    //    $("#song_name").show();
+    //}
 
     $("#song_name").html(bgPage.songName);
     $("#song_name").attr("title", bgPage.songName);
-    setTimeout(initSongNameInterval, 1000)
+    setTimeout(getSongNameInterval, 1000)
 }
 
 function toggleActionButtons() {

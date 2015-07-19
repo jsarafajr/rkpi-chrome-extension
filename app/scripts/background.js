@@ -8,23 +8,8 @@ var RADIO_LOCATIONS = [
     "http://77.47.130.190:8000/64kbps"
 ];
 
-var SEARCH_ENGINES = [
-    // VK
-    function(query) {
-        return "http://vk.com/search?c%5Bq%5D=" + query + "&c%5Bsection%5D=audio"
-    },
-    // YouTube
-    function(query) {
-        return "https://www.youtube.com/results?search_query=" + query;
-    },
-    // Google
-    function(query) {
-        return "https://www.google.com.ua/?gws_rd=ssl#safe=off&q=" + query;
-    }
-];
-
 var radioUrlIndex = 0;
-var searchIndex = 0;
+var searchEngineIndex = 0;
 
 var songName = "Click on <b>Play</b> button";
 var songNameLoaded = false;
@@ -36,7 +21,7 @@ function loadOptions() {
         searchEngineIndex: 0,
         qualityIndex: 0
     }, function(options) {
-        searchIndex = options.searchEngineIndex;
+        searchEngineIndex = options.searchEngineIndex;
         radioUrlIndex = options.qualityIndex;
 
         if (isPlaying) {
@@ -84,11 +69,22 @@ function toggleMute() {
 }
 
 function searchSong() {
-    chrome.tabs.create({url: SEARCH_ENGINES[searchIndex](songName)});
+    chrome.tabs.create({url: getSearchUrl(songName)});
 }
 
 function setBadge(text) {
     chrome.browserAction.setBadgeText({text: text});
+}
+
+function getSearchUrl(query) {
+    switch (searchEngineIndex) {
+        case 0:
+            return "http://vk.com/search?c%5Bq%5D=" + query + "&c%5Bsection%5D=audio";
+        case 1:
+            return "https://www.youtube.com/results?search_query=" + query;
+        case 2:
+            return "https://www.google.com.ua/?gws_rd=ssl#safe=off&q=" + query;
+    }
 }
 
 function songNameRequestInterval() {
@@ -99,10 +95,31 @@ function songNameRequestInterval() {
 
     request.onreadystatechange = function () {
         if (request.readyState != 4 || request.status != 200) return;
-        var responseJSON = JSON.parse(request.responseText);
-        songName = responseJSON["artist"] + " - " + responseJSON["title"];
+        var metadata = JSON.parse(request.responseText);
+
+        var artist = metadata["artist"];
+        var title = metadata["title"];
+
         songNameLoaded = true;
+
+        if (artist === "" && title === "") {
+            songName = "Artist - Title";
+            return;
+        }
+
+        if (artist === "") {
+            songName = title;
+            return;
+        }
+
+        if (title === "") {
+            songName = artist + " - Song Title";
+            return;
+        }
+
+        songName = artist + " - " + title;
     };
+
     request.send();
 
     setTimeout(songNameRequestInterval, 5000);
