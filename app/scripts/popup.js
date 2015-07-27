@@ -10,9 +10,16 @@ if (bgPage.isPlaying) {
 
 // getting song name
 getSongNameInterval();
+startTextScrolling();
 
 $("#play_btn").click(function() {
     bgPage.playRadio();
+
+    // song name to 'loading'
+    setSongName(bgPage.songName);
+    $("#song_name").css({left: 0});
+    $("#search_btn").hide();
+
     toggleActionButtons();
 });
 
@@ -46,17 +53,17 @@ $("#options_btn").click(function() {
 
 function getSongNameInterval() {
     if (bgPage.songNameLoaded) {
-        //$("#song_name").show();
         $("#search_btn").show();
     }
 
-    //if (bgPage.songName === "Loading...") {
-    //    $("#song_name").show();
-    //}
+    setSongName(bgPage.songName);
 
-    $("#song_name").html(bgPage.songName);
-    $("#song_name").attr("title", bgPage.songName);
     setTimeout(getSongNameInterval, 1000)
+}
+
+function setSongName(songName) {
+    $("#song_name").html(songName);
+    $("#song_name").attr("title", songName);
 }
 
 function toggleActionButtons() {

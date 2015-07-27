@@ -1,16 +1,24 @@
-setInterval(function() {
-    var outer = $(".song-title");
-    var inner = $("#song_name");
+var textScrollerIntervalId;
 
-    if (inner.width() > outer.width()) {
-        var left = inner.position().left - 0.5;
+function startTextScrolling() {
+    textScrollerIntervalId = setInterval(function() {
+        var outer = $(".song-title");
+        var inner = $("#song_name");
 
-        if (left + inner.width() < 0) {
-            left = outer.width();
+        if (inner.width() > outer.width()) {
+            var left = inner.position().left - 0.5;
+
+            if (left + inner.width() < 0) {
+                left = outer.width();
+            }
+
+            inner.css({left: left});
         }
 
-        inner.css({left: left});
-    }
 
+    }, 17);
+}
 
-}, 17);
+function stopTextScrolling() {
+    clearInterval(textScrollerIntervalId);
+}
