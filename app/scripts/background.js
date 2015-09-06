@@ -97,6 +97,7 @@ function songNameRequestInterval() {
         if (request.readyState != 4 || request.status != 200) return;
 
         songName = JSON.parse(request.responseText).song;
+        songNameLoaded = true;
     };
 
     request.send();

@@ -3,8 +3,8 @@ module.exports = {
 		options: {
 			dependencies: [
 				{
-					"src": "bower/jquery/dist/jquery.min.js",
-					"dest": "app/libs/js/jquery.min.js"
+					"src": "app/bower/jquery/dist/jquery.min.js",
+					"dest": "app/lib/js/jquery.min.js"
 			}
 			]
 		}
@@ -13,7 +13,7 @@ module.exports = {
 		options: {
 			dependencies: [
 				{
-					"src": "bower/jquery/dist/jquery.min.js",
+					"src": "app/bower/jquery/dist/jquery.min.js",
 					"dest": "app/libs/js/jquery.min.js"
 			}
 			]

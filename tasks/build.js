@@ -102,7 +102,6 @@ module.exports = function (grunt) {
 		'copy:build',
 		'clean:css',
 		'clean:js',
-		'setMinContentScripts',
 		'compress'
 	]);
 };

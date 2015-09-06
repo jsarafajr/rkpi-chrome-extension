@@ -3,7 +3,7 @@ module.exports = {
     files: [{
       expand: true,
       cwd: 'app',
-      src: ['manifest.json', 'img/**/*.*', 'libs/**/*.*'],
+      src: ['manifest.json', 'img/**/*.*', 'lib/**/*.*'],
       dest: 'build'
     }]
   },
@@ -11,7 +11,7 @@ module.exports = {
     files: [{
       expand: true,
       cwd: 'app',
-      src: ['manifest.json', 'img/**/*.*', 'libs/**/*.*'],
+      src: ['manifest.json', 'img/**/*.*', 'lib/**/*.*'],
       dest: 'build'
     }]
   },
@@ -36,7 +36,7 @@ module.exports = {
       expand: true,
       cwd: 'app/scripts/',
       src: ['*.js'],
-      dest: 'build/js'
+      dest: 'build/scripts'
     }]
   },
   popup: {
