@@ -95,29 +95,8 @@ function songNameRequestInterval() {
 
     request.onreadystatechange = function () {
         if (request.readyState != 4 || request.status != 200) return;
-        var metadata = JSON.parse(request.responseText);
 
-        var artist = metadata["artist"];
-        var title = metadata["title"];
-
-        songNameLoaded = true;
-
-        if (artist === "" && title === "") {
-            songName = "Artist - Title";
-            return;
-        }
-
-        if (artist === "") {
-            songName = title;
-            return;
-        }
-
-        if (title === "") {
-            songName = artist + " - Song Title";
-            return;
-        }
-
-        songName = artist + " - " + title;
+        songName = JSON.parse(request.responseText).song;
     };
 
     request.send();
