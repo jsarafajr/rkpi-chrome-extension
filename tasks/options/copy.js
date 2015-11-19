@@ -3,7 +3,7 @@ module.exports = {
     files: [{
       expand: true,
       cwd: 'app',
-      src: ['manifest.json', 'img/**/*.*', 'lib/**/*.*'],
+      src: ['manifest.json', 'img/**/*.*', 'lib/**/*.*', '*.html', 'bower/**/*.*', 'style/*'],
       dest: 'build'
     }]
   },

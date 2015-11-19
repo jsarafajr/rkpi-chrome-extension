@@ -4,8 +4,8 @@ var isPlaying = false;
 var volume = 70; // default 70% volume
 
 var RADIO_LOCATIONS = [
-    "http://77.47.130.190:8000/radiokpi",
-    "http://77.47.130.190:8000/64kbps"
+    "http://rkpi.me/getStream",
+    "http://rkpi.me/getStream"
 ];
 
 var radioUrlIndex = 0;
@@ -91,7 +91,7 @@ function songNameRequestInterval() {
     if (!isPlaying) return;
 
     var request = new XMLHttpRequest();
-    request.open("GET", "http://77.47.130.190:7000/getmeta", true);
+    request.open("GET", "http://rkpi.me/getMeta", true);
 
     request.onreadystatechange = function () {
         if (request.readyState != 4 || request.status != 200) return;
