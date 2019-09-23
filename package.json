@@ -7,18 +7,18 @@
     "private": true,
     "dependencies": {},
     "devDependencies": {
-        "chalk": "^0.5.1",
-        "clean-css": "^2.2.13",
-        "glob": "^4.0.5",
-        "grunt": "~0.4.1",
-        "grunt-contrib-clean": "^0.6.0",
-        "grunt-contrib-compass": "~0.6.0",
-        "grunt-contrib-compress": "^0.10.0",
-        "grunt-contrib-copy": "^0.5.0",
-        "grunt-contrib-htmlmin": "~0.2.0",
-        "grunt-contrib-less": "~0.11.0",
-        "grunt-contrib-uglify": "~0.4.0",
-        "grunt-contrib-watch": "~0.5.3",
-        "load-grunt-tasks": "~0.2.0"
+        "chalk": "^2.4.2",
+        "clean-css": "^4.2.1",
+        "glob": "^7.1.4",
+        "grunt": "~1.0.4",
+        "grunt-contrib-clean": "^2.0.0",
+        "grunt-contrib-compass": "~1.1.1",
+        "grunt-contrib-compress": "^1.5.0",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-contrib-htmlmin": "~3.1.0",
+        "grunt-contrib-less": "~2.0.0",
+        "grunt-contrib-uglify": "~4.0.1",
+        "grunt-contrib-watch": "~1.1.0",
+        "load-grunt-tasks": "~5.1.0"
     }
 }
